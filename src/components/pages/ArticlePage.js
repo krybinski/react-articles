@@ -4,8 +4,7 @@ import Loader from 'react-loader';
 
 import CommentsList from './../lists/CommentsList';
 
-import { GetArticle } from './../../services/ArticlesService';
-import { GetArticleComments } from './../../services/ArticlesService';
+import { GetArticle, GetArticleComments } from './../../services/ArticlesService';
 
 class ArticlePage extends Component {
   constructor(props) {

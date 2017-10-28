@@ -4,8 +4,7 @@ import Loader from 'react-loader';
 
 import ArticlesList from './../lists/ArticlesList';
 
-import { GetUser } from './../../services/UsersService';
-import { GetUserArticles } from './../../services/UsersService';
+import { GetUser, GetUserArticles } from './../../services/UsersService';
 
 class UserPage extends Component {
   constructor(props) {
