@@ -12,7 +12,7 @@ export const GetArticle = (id) => {
   return axios.get(url);
 };
 
-export const GetUserArticles = (id) => {
-  const url = `${API}/posts?userId=${id}`;
+export const GetArticleComments = (id) => {
+  const url = `${API}/posts/${id}/comments`;
   return axios.get(url);
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loader from 'react-loader';
 
 import ArticlesList from './../lists/ArticlesList';
 
@@ -8,6 +9,7 @@ class ArticlesPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loader: false,
       articlesList: []
     };
   }
@@ -15,19 +17,25 @@ class ArticlesPage extends Component {
   componentDidMount() {
     GetArticles()
       .then(res => {
-        this.setState({ articlesList: res.data });
+        this.setState({
+          loader: true,
+          articlesList: res.data
+        });
       })
       .catch(error => console.log(error));
   }
 
   render() {
+    const loaded = this.state.loader;
     const articlesList = this.state.articlesList;
 
     return (
-      <div>
-        <h1>Articles list</h1>
-        <ArticlesList articles={articlesList} />
-      </div>
+      <Loader loaded={loaded}>
+        <div>
+          <h1>Articles list</h1>
+          <ArticlesList articles={articlesList} />
+        </div>
+      </Loader>
     );
   }
 }

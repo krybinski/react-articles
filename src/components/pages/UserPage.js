@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import Loader from 'react-loader';
 
 import ArticlesList from './../lists/ArticlesList';
 
 import { GetUser } from './../../services/UsersService';
-import { GetUserArticles } from './../../services/ArticlesService';
+import { GetUserArticles } from './../../services/UsersService';
 
 class UserPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loader: false,
       user: {},
       articlesList: []
     };
@@ -23,7 +25,10 @@ class UserPage extends Component {
 
         GetUserArticles(id)
           .then(res => {
-            this.setState({ articlesList: res.data });
+            this.setState({
+              loader: true,
+              articlesList: res.data
+            });
           })
           .catch(error => console.log(error))
       })
@@ -31,22 +36,25 @@ class UserPage extends Component {
   }
 
   render() {
+    const loaded = this.state.loader;
     const user = this.state.user;
     const articlesList = this.state.articlesList;
 
     return (
-      <div>
-        <h1>{user.name}</h1>
-        <p><strong>Username: </strong> {user.username}</p>
-        <p><strong>Email: </strong> {user.email}</p>
-        <p><strong>Phone: </strong> {user.phone}</p>
-        <p><strong>Website: </strong> {user.website}</p>
+      <Loader loaded={loaded}>
+        <div>
+          <h1>{user.name}</h1>
+          <p><strong>Username: </strong> {user.username}</p>
+          <p><strong>Email: </strong> {user.email}</p>
+          <p><strong>Phone: </strong> {user.phone}</p>
+          <p><strong>Website: </strong> {user.website}</p>
 
-        <div className="list-2">
-          <h3>My articles:</h3>
-          <ArticlesList articles={articlesList} />
+          <div className="mt50">
+            <h3>My articles:</h3>
+            <ArticlesList articles={articlesList} />
+          </div>
         </div>
-      </div>
+      </Loader>
     );
   }
 }

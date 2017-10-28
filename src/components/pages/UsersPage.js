@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loader from 'react-loader';
 
 import UsersList from './../lists/UsersList';
 
@@ -8,6 +9,7 @@ class UsersPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loader: false,
       usersList: []
     };
   }
@@ -15,19 +17,25 @@ class UsersPage extends Component {
   componentDidMount() {
     GetUsers()
       .then(res => {
-        this.setState({ usersList: res.data });
+        this.setState({
+          loader: true,
+          usersList: res.data
+        });
       })
       .catch(error => console.log(error));
   }
 
   render() {
+    const loaded = this.state.loader;
     const usersList = this.state.usersList;
 
     return (
-      <div>
-        <h1>Users list</h1>
-        <UsersList users={usersList} />
-      </div>
+      <Loader loaded={loaded}>
+        <div>
+          <h1>Users list</h1>
+          <UsersList users={usersList} />
+        </div>
+      </Loader>
     );
   }
 }

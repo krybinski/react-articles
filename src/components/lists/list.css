@@ -3,12 +3,21 @@
   padding-left: 30px;
 }
 
-.list-2 {
-  margin-top: 50px;
+.list_full {
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .list-item {
   margin-bottom: 5px;
+}
+
+.list-item_border {
+  border-bottom: 1px solid grey;
+}
+
+.list-item_border:last-child {
+  border-bottom: 0;
 }
 
 .list-item:last-child {
