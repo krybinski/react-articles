@@ -1,0 +1,16 @@
+.articles-list {
+  list-style-type: decimal;
+  padding-left: 30px;
+}
+
+.article-item {
+  margin-bottom: 5px;
+}
+
+.article-item:last-child {
+  margin-bottom: 0;
+}
+
+.article-item a {
+  font-size: 15px;
+}

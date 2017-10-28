@@ -1,0 +1,20 @@
+.nav {
+  width: 100%;
+  padding: 15px 30px;
+  background-color: #363636;
+}
+
+.nav-item {
+  display: inline-block;
+  padding: 15px;
+}
+
+.nav-item a {
+  font-weight: 500;
+  color: #ffffff;
+  transition: color .2s ease-in-out;
+}
+
+.nav-item a:hover {
+  color: #3498db;
+}

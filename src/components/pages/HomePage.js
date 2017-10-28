@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const HomePage = () => (
   <div>
-    <h1>Home page</h1>
-    <Link to="/articles">Articles</Link>
+    <h1>Hello, this is my first React app.</h1>
+    <p>This app using <a href="https://jsonplaceholder.typicode.com/" target="_blank">JSONPlaceholder</a> fake REST API as example.</p>
   </div>
 );
 

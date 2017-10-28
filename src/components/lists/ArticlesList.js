@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+import './articlesList.css';
 
 class ArticlesList extends Component {
   render() {
     return (
       <div>
-        <h2>Articles list</h2>
-        <ul>
+        <ul className="articles-list">
           {this.props.articles.map(item => {
-            return <li key={item.id}>{item.title}</li>
+            return <li key={item.id} className="article-item">
+              <Link to={'/articles/' + item.id}>{item.title}</Link>
+            </li>
           })}
         </ul>
       </div>

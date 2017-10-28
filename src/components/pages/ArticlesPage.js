@@ -1,36 +1,37 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+
 import ArticlesList from './../lists/ArticlesList';
+
+import { GetArticles } from './../../services/ArticlesService';
 
 class ArticlesPage extends Component {
   constructor(props) {
     super(props);
-    this.state = { articlesList: [] };
+    this.state = {
+      articlesList: []
+    };
   }
 
-  getArticles = () => {
-    const url = 'https://jsonplaceholder.typicode.com/posts';
-
-    axios.get(url)
+  componentDidMount() {
+    /** Get articles list */
+    GetArticles()
       .then(res => {
-        this.setState({ articlesList: res.data });
+        this.setState({
+          articlesList: res.data
+        })
       })
       .catch(error => console.log(error));
   }
 
-  componentDidMount() {
-    this.getArticles();
-  }
-
   render() {
+    const articlesList = this.state.articlesList;
+
     return (
       <div>
-        <h1>Articles page</h1>
-        <Link to="/">Home</Link>
-        <ArticlesList articles={this.state.articlesList} />
+        <h1>Articles list</h1>
+        <ArticlesList articles={articlesList} />
       </div>
-    )
+    );
   }
 }
 
