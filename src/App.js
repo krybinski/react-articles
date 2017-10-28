@@ -8,7 +8,7 @@ import ArticlePage from './components/pages/ArticlePage';
 import UsersPage from './components/pages/UsersPage';
 import UserPage from './components/pages/UserPage';
 
-import './app.css';
+import './App.css';
 
 const App = () => (
   <div>

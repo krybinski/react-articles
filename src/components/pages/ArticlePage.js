@@ -21,14 +21,14 @@ class ArticlePage extends Component {
     const id = this.props.match.params.id;
 
     axios.all([GetArticle(id), GetArticleComments(id)])
-    .then(axios.spread((article, comments) => {
-      this.setState({
-        loader: true,
-        article: article.data,
-        commentsList: comments.data
-      });
-    }))
-    .catch(error => console.log(error));
+      .then(axios.spread((article, comments) => {
+        this.setState({
+          loader: true,
+          article: article.data,
+          commentsList: comments.data
+        });
+      }))
+      .catch(error => console.log(error));
   }
 
   render() {

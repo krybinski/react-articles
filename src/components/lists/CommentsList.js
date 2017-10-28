@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import './list.css';
+import './List.css';
 
 class CommentsList extends Component {
   render() {

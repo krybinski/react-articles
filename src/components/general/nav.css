@@ -9,6 +9,10 @@
   padding: 15px;
 }
 
+.nav-item.active a {
+  color: #3498db;
+}
+
 .nav-item a {
   font-weight: 500;
   color: #ffffff;
