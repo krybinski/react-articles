@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 
 import './list.css';
 
-class ArticlesList extends Component {
+class UsersList extends Component {
   render() {
     return (
       <div>
         <ul className="list">
-          {this.props.articles.map(item => {
+          {this.props.users.map(item => {
             return <li key={item.id} className="list-item">
-              <Link to={'/articles/' + item.id}>{item.title}</Link>
+              <Link to={'/users/' + item.id}>{item.name}</Link>
             </li>
           })}
         </ul>
@@ -20,8 +20,8 @@ class ArticlesList extends Component {
   }
 }
 
-ArticlesList.propTypes = {
-  articles: PropTypes.array.isRequired
+UsersList.propTypes = {
+  users: PropTypes.array.isRequired
 }
 
-export default ArticlesList;
+export default UsersList;

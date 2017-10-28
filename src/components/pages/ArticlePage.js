@@ -15,15 +15,13 @@ class ArticlePage extends Component {
 
     GetArticle(id)
       .then(res => {
-        this.setState({
-          article: res.data
-        });
+        this.setState({ article: res.data });
       })
       .catch(error => console.log(error));
   }
 
   render() {
-    let article = this.state.article;
+    const article = this.state.article;
 
     return (
       <div>

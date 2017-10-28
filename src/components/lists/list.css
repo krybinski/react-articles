@@ -1,16 +1,20 @@
-.articles-list {
+.list {
   list-style-type: decimal;
   padding-left: 30px;
 }
 
-.article-item {
+.list-2 {
+  margin-top: 50px;
+}
+
+.list-item {
   margin-bottom: 5px;
 }
 
-.article-item:last-child {
+.list-item:last-child {
   margin-bottom: 0;
 }
 
-.article-item a {
+.list-item a {
   font-size: 15px;
 }

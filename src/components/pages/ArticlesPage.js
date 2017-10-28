@@ -13,12 +13,9 @@ class ArticlesPage extends Component {
   }
 
   componentDidMount() {
-    /** Get articles list */
     GetArticles()
       .then(res => {
-        this.setState({
-          articlesList: res.data
-        })
+        this.setState({ articlesList: res.data });
       })
       .catch(error => console.log(error));
   }
