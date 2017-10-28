@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Loader from 'react-loader';
 
 import ArticlesList from './../lists/ArticlesList';
@@ -19,19 +20,14 @@ class UserPage extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
 
-    GetUser(id)
-      .then(res => {
-        this.setState({ user: res.data });
-
-        GetUserArticles(id)
-          .then(res => {
-            this.setState({
-              loader: true,
-              articlesList: res.data
-            });
-          })
-          .catch(error => console.log(error))
-      })
+    axios.all([GetUser(id), GetUserArticles(id)])
+      .then(axios.spread((user, articles) => {
+        this.setState({
+          loader: true,
+          user: user.data,
+          articlesList: articles.data
+        });
+      }))
       .catch(error => console.log(error));
   }
 

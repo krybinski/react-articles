@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Loader from 'react-loader';
 
 import CommentsList from './../lists/CommentsList';
@@ -19,20 +20,15 @@ class ArticlePage extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
 
-    GetArticle(id)
-      .then(res => {
-        this.setState({ article: res.data });
-
-        GetArticleComments(id)
-          .then(res => {
-            this.setState({
-              loader: true,
-              commentsList: res.data
-            });
-          })
-          .catch(error => console.log(error));
-      })
-      .catch(error => console.log(error));
+    axios.all([GetArticle(id), GetArticleComments(id)])
+    .then(axios.spread((article, comments) => {
+      this.setState({
+        loader: true,
+        article: article.data,
+        commentsList: comments.data
+      });
+    }))
+    .catch(error => console.log(error));
   }
 
   render() {
